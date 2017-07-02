@@ -4,6 +4,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Coded by Seong Chee Ken on 22/06/2017, 23:03.
+ * Classic runway. Once landed, runway is available for other aircrafts to land again. Same goes to taking off.
  */
 class Runway {
     int id;

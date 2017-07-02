@@ -2,6 +2,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Coded by Seong Chee Ken on 02/07/2017, 15:19.
+ * Reserved only for emergency landings.
  */
 class EmergencyRunway extends Runway {
 

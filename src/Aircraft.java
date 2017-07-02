@@ -41,7 +41,7 @@ public class Aircraft extends Thread {
 
         if (full) {
             System.out.println("Aircraft " + aircraftId + " is on hold in the airspace.");
-        }
+        } //checks if all runways are full, if yes, put on hold (assumption)
         try {
             airspace.enter(this);
         } catch (InterruptedException e) {

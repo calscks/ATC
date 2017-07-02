@@ -2,6 +2,8 @@ import java.util.concurrent.BlockingQueue;
 
 /**
  * Coded by Seong Chee Ken on 02/07/2017, 01:56.
+ * Producer runnable which produces aircraft threads and put them into queue. The runnable will be placed into thread
+ * later on.
  */
 public class Producer implements Runnable {
     private BlockingQueue<Aircraft> queue;
@@ -19,10 +21,12 @@ public class Producer implements Runnable {
             try {
                 queue.put(new Aircraft(airspace, count + 1));
                 count++;
-                Thread.sleep(7500);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            if (count == 99) //stops producing when it reaches 100th aircraft
+                break;
         }
     }
 }

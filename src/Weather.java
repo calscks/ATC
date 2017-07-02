@@ -3,7 +3,7 @@ import java.util.TimerTask;
 
 /**
  * Coded by Seong Chee Ken on 01/07/2017, 16:48.
- * Weather is a TimerTask class. It runs a timer in it, every 10 seconds
+ * Weather is a TimerTask class. It runs a timer in it, every 10 seconds switch weather.
  */
 public class Weather extends TimerTask {
     private volatile int value;

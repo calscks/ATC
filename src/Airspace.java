@@ -2,6 +2,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Coded by Seong Chee Ken on 22/06/2017, 20:45.
+ * The airspace being observed and controlled by the ATC.
  */
 class Airspace {
     private Runway runways[];
@@ -41,8 +42,6 @@ class Airspace {
         accessGates(aircraft);
 
         if (aircraft.getStatus().equals(AircraftStatus.MALFUNC)) {
-            System.out.println("Aircraft " + aircraft.getAircraftId() + " due to " +
-                    aircraft.getStatus().getStatusName() + " will be repaired and unavailable for any flights.");
             return;
         }
 
@@ -70,6 +69,13 @@ class Airspace {
                     break;
             }
         }
+
+        if (aircraft.getStatus().equals(AircraftStatus.MALFUNC)) {
+            System.out.println("Aircraft " + aircraft.getAircraftId() + " due to " +
+                    aircraft.getStatus().getStatusName() + " will be repaired and unavailable for any flights.");
+            return;
+        }
+
         Thread.sleep(ThreadLocalRandom.current().nextInt(50, 300) * 10);
         gates[count].undock(aircraft);
     }

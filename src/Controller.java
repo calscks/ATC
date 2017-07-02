@@ -26,24 +26,10 @@ public class Controller {
 
         Airspace airspace = new Airspace(runways, emergencyRunways, gates, weather);
 
-        BlockingQueue<Aircraft> queue = new LinkedBlockingQueue<>();
+        BlockingQueue<Aircraft> queue = new LinkedBlockingQueue<>(); //unbounded blocking queue
         Producer producer = new Producer(queue, airspace);
         Consumer consumer = new Consumer(queue);
         new Thread(producer).start();
         new Thread(consumer).start();
-
-        /*ArrayList<Aircraft> aircrafts = new ArrayList<>();
-        for (int i = 1; i <= 10; i++){
-            aircrafts.add(new Aircraft(airspace, i));
-        }
-
-        for (Aircraft aircraft : aircrafts){
-            aircraft.start();
-            try {
-                Thread.sleep(ThreadLocalRandom.current().nextInt(3000,6000));
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }*/
     }
 }
