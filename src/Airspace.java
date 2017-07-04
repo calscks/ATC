@@ -23,7 +23,7 @@ class Airspace {
 
         if (!aircraft.getStatus().equals(AircraftStatus.NORMAL)) {
             System.out.println("Aircraft " + aircraft.getAircraftId() + " is requesting for emergency due to " +
-                    aircraft.getStatus().getStatusName() + ".");
+                    aircraft.getStatus().getStatusName() + ". Emergency landing is detected.");
             for (count = 0; count < emergencyRunways.length; count++) {
                 x = emergencyRunways[count].land(aircraft);
                 if (x)
@@ -43,7 +43,7 @@ class Airspace {
 
         if (aircraft.getStatus().equals(AircraftStatus.MALFUNC)) {
             return;
-        }
+        } //do not proceed if malfunction
 
         while (!y) {
             if (weather.getValue() >= 1 && weather.getValue() <= 8) {
@@ -74,13 +74,22 @@ class Airspace {
             System.out.println("Aircraft " + aircraft.getAircraftId() + " due to " +
                     aircraft.getStatus().getStatusName() + " will be repaired and unavailable for any flights.");
             return;
-        }
+        } //malfunctioned aircrafts don't fly...
 
         Thread.sleep(ThreadLocalRandom.current().nextInt(50, 300) * 10);
         gates[count].undock(aircraft);
     }
 
-    Runway[] getRunways() {
-        return runways;
+    boolean runwayFull(){
+        boolean full = false;
+        for (Runway runway : runways) {
+            if (runway.isOccupied()) {
+                full = true;
+            } else if (!runway.isOccupied()) {
+                full = false;
+                break;
+            }
+        }
+        return full;
     }
 }

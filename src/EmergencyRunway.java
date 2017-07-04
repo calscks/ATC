@@ -18,6 +18,7 @@ class EmergencyRunway extends Runway {
             occupied = true;
             System.out.println("Aircraft " + aircraft.getAircraftId() + " is assigned to emergency runway " + id + "...");
             Thread.sleep(ThreadLocalRandom.current().nextInt(100, 150) * 5);
+            System.out.println("Aircraft " + aircraft.getAircraftId() + " switches frequency to 2500Hz.");
             System.out.println("Aircraft " + aircraft.getAircraftId() + " is landing on emergency runway " + id + "...");
             Thread.sleep(ThreadLocalRandom.current().nextInt(150, 200) * 20);
             System.out.println("Aircraft " + aircraft.getAircraftId() + " landed on emergency runway " + id + ".");

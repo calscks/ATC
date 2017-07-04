@@ -4,11 +4,12 @@ import java.util.concurrent.LinkedBlockingQueue;
 /**
  * Coded by Seong Chee Ken on 24/06/2017, 20:46.
  */
-public class Controller {
+public class Main {
     public static void main(String[] args) {
         Weather weather = new Weather();
         Runway runways[] = new Runway[4];
         Runway emergencyRunways[] = new EmergencyRunway[2];
+        BlockingQueue<Aircraft> queue = new LinkedBlockingQueue<>(); //unbounded blocking queue
 
         Gate gates[] = new Gate[8];
 
@@ -26,9 +27,8 @@ public class Controller {
 
         Airspace airspace = new Airspace(runways, emergencyRunways, gates, weather);
 
-        BlockingQueue<Aircraft> queue = new LinkedBlockingQueue<>(); //unbounded blocking queue
         Producer producer = new Producer(queue, airspace);
-        Consumer consumer = new Consumer(queue);
+        Consumer consumer = new Consumer(queue, airspace);
         new Thread(producer).start();
         new Thread(consumer).start();
     }

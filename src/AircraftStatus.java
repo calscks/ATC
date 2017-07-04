@@ -1,5 +1,6 @@
 /**
  * Coded by Seong Chee Ken on 02/07/2017, 01:48.
+ * enum class of aircraft's statuses.
  */
 public enum AircraftStatus {
     NORMAL("normal"),

@@ -27,21 +27,6 @@ public class Aircraft extends Thread {
 
     @Override
     public void run() {
-        System.out.println("Aircraft " + aircraftId + " is entering the airspace.");
-
-        boolean full = false;
-        for (Runway runway : airspace.getRunways()) {
-            if (runway.isOccupied()) {
-                full = true;
-            } else if (!runway.isOccupied()) {
-                full = false;
-                break;
-            }
-        }
-
-        if (full) {
-            System.out.println("Aircraft " + aircraftId + " is on hold in the airspace.");
-        } //checks if all runways are full, if yes, put on hold (assumption)
         try {
             airspace.enter(this);
         } catch (InterruptedException e) {

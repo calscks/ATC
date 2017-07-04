@@ -21,11 +21,10 @@ public class Producer implements Runnable {
             try {
                 queue.put(new Aircraft(airspace, count + 1));
                 count++;
-                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            if (count == 99) //stops producing when it reaches 100th aircraft
+            if (count == 20) //stops producing when it reaches 100th aircraft
                 break;
         }
     }
