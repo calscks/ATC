@@ -26,7 +26,7 @@ public class Consumer implements Runnable {
                 Aircraft aircraft = queue.take();
                 count++;
                 System.out.println("Aircraft " + aircraft.getAircraftId() + " is entering the airspace and switching frequency to 1000Hz.");
-                if (airspace.runwayFull()) {
+                if (airspace.runwayFull() && aircraft.getStatus().equals(AircraftStatus.NORMAL)) {
                     System.out.println("Aircraft " + aircraft.getAircraftId() + " is assigned to hold in the airspace.");
                     holder.put(aircraft); //put into holding queue
                 } else {
