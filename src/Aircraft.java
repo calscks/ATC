@@ -28,7 +28,7 @@ public class Aircraft extends Thread {
     @Override
     public void run() {
         try {
-            airspace.enter(this);
+            airspace.monitor(this); //airspace (controlled by ATC) will monitor the aircraft
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

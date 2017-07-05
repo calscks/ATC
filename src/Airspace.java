@@ -17,17 +17,19 @@ class Airspace {
         this.weather = weather;
     }
 
-    void enter(Aircraft aircraft) throws InterruptedException {
+    void monitor(Aircraft aircraft) throws InterruptedException {
         boolean x = false, y = false;
         int count, count2;
 
         if (!aircraft.getStatus().equals(AircraftStatus.NORMAL)) {
             System.out.println("Aircraft " + aircraft.getAircraftId() + " is requesting for emergency due to " +
                     aircraft.getStatus().getStatusName() + ". Emergency landing is detected.");
-            for (count = 0; count < emergencyRunways.length; count++) {
-                x = emergencyRunways[count].land(aircraft);
-                if (x)
-                    break;
+            while (!x) {
+                for (count = 0; count < emergencyRunways.length; count++) {
+                    x = emergencyRunways[count].land(aircraft);
+                    if (x)
+                        break;
+                }
             }
         } else {
             while (!x) {
