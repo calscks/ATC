@@ -24,7 +24,7 @@ public class Producer implements Runnable {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            if (count == 20) //stops producing when it reaches 100th aircraft
+            if (count == 20) //change these values for more simulation!
                 break;
         }
     }

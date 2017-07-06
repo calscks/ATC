@@ -32,7 +32,7 @@ public class Consumer implements Runnable {
                 } else {
                     aircraft.start(); //just start if runway's available
                 }
-                Thread.sleep(ThreadLocalRandom.current().nextInt(100, 200));
+                Thread.sleep(ThreadLocalRandom.current().nextInt(1500, 10000)); //change these values for more simulation!
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -48,7 +48,7 @@ public class Consumer implements Runnable {
                 if (!airspace.runwayFull()) {
                     try {
                         holder.take().start(); //FIFO order, who holds first is the first one to go
-                        Thread.sleep(ThreadLocalRandom.current().nextInt(100, 200));
+                        Thread.sleep(ThreadLocalRandom.current().nextInt(1500, 10000)); //change these values for more simulation!
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
